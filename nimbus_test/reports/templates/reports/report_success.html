@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmação de Envio de Relatório</title>
+</head>
+<body>
+    <h1>Confirmação de Envio de Relatório</h1>
+
+    <h2>E-mails Enviados:</h2>
+    <ul>
+        {% for email in emails_sent %}
+            <li>{{ email }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>E-mails Não Encontrados:</h2>
+    <ul>
+        {% for phone in emails_not_found %}
+            <li>{{ phone }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{% url 'create_report' %}" method="get">
+        <button type="submit">Voltar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+      - "5784:5784"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DOCKERIZED=true
+    entrypoint: ["sh", "/app/entrypoint.sh"]
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: nimbustest
+      POSTGRES_USER: marcelo
+      POSTGRES_PASSWORD: 123marcelo
+    ports:
+      - "5433:5432"
